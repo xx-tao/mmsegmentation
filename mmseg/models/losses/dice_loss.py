@@ -172,6 +172,7 @@ class DiceLoss(nn.Module):
         if self.activate:
             if self.use_sigmoid:
                 pred = pred.sigmoid()
+                one_hot_target = target[:, None, ...]
             elif pred.shape[1] != 1:
                 # softmax does not work when there is only 1 class
                 pred = pred.softmax(dim=1)
