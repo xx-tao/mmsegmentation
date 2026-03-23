@@ -1,12 +1,12 @@
 # dataset settings
 dataset_type = 'CrackSegmentationDataset'
 # data_root = '/mnt/sda1/workspaces/datasets/crack/Riebo/train_new_0725'
-data_root = "/home/riebo/workspaces/datasets/new_crack_dataset_v1"
+data_root = "/home/riebo/workspaces/datasets/new_crack_dataset_v5_1"
 
 crop_size = (1024, 1024)
 train_pipeline = [
     dict(type='LoadImageFromFile'),
-    dict(type='LoadAnnotations'),
+    dict(type='LoadBinaryAnnotations'),
     # dict(
     #     type='RandomResize',
     #     scale=(2048, 512),
@@ -22,7 +22,7 @@ test_pipeline = [
     # dict(type='Resize', scale=(2048, 512), keep_ratio=True),
     # add loading annotation after ``Resize`` because ground truth
     # does not need to do resize data transform
-    dict(type='LoadAnnotations'),
+    dict(type='LoadBinaryAnnotations'),
     dict(type='PackSegInputs')
 ]
 # img_ratios = [0.5, 0.75, 1.0, 1.25, 1.5, 1.75]

@@ -1,6 +1,6 @@
 _base_ = [
     '../_base_/models/segformer_mit-b0.py', '../_base_/datasets/crack.py',
-    '../_base_/default_runtime.py', '../_base_/schedules/schedule_1k.py'
+    '../_base_/default_runtime.py', '../_base_/schedules/schedule_20k.py'
 ]
 crop_size = (1024, 1024)
 data_preprocessor = dict(size=crop_size)
@@ -21,7 +21,7 @@ optim_wrapper = dict(
     _delete_=True,
     type='OptimWrapper',
     optimizer=dict(
-        type='AdamW', lr=0.001, betas=(0.9, 0.999), weight_decay=1e-4),
+        type='AdamW', lr=0.00006, betas=(0.9, 0.999), weight_decay=0.01),
     paramwise_cfg=dict(
         custom_keys={
             'pos_block': dict(decay_mult=0.),

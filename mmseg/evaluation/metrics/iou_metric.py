@@ -154,7 +154,10 @@ class IoUMetric(BaseMetric):
         class_table_data = PrettyTable()
         for key, val in ret_metrics_class.items():
             class_table_data.add_column(key, val)
+            # metrics[key+]
 
+        metrics[ret_metrics_class['Class'][0] + "_IoU"] = ret_metrics_class['IoU'][0]
+        metrics[ret_metrics_class['Class'][1] + "_IoU"] = ret_metrics_class['IoU'][1]
         print_log('per class results:', logger)
         print_log('\n' + class_table_data.get_string(), logger=logger)
 
