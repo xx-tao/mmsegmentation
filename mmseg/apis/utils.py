@@ -13,7 +13,7 @@ def _preprare_data(imgs: ImageType, model: BaseModel):
 
     cfg = model.cfg
     for t in cfg.test_pipeline:
-        if t.get('type') == 'LoadAnnotations':
+        if t.get('type') == 'LoadAnnotations' or t.get('type') == 'LoadBinaryAnnotations':
             cfg.test_pipeline.remove(t)
 
     is_batch = True
